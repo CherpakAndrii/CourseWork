@@ -52,7 +52,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(277, 93);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Enter 4 inequalities:";
+            this.label1.Text = "Enter your inequalities:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxes

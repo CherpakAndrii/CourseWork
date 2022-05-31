@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Model;
+using Range = WinFormsApp1.Model.Range;
+
 
 namespace WinFormsApp1
 {
@@ -22,10 +24,9 @@ namespace WinFormsApp1
             Application.Run(new Form1());
             if (!Form1Closed)
             {
-                foreach (string line in InequalitiesFactory.Sources)
-                {
-                    MessageBox.Show(line);
-                }
+                Range? result = AnswerCalculator.GetAnswer();
+                if (result is null) MessageBox.Show("No answer");
+                else MessageBox.Show(result.ToString());
             }
         }
     }

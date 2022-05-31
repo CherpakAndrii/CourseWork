@@ -29,7 +29,7 @@ namespace WinFormsApp1
                 }
                 else
                 {
-                    InequalitiesFactory.Sources[i] = textFields[i].Text;
+                    InequalitiesFactory.Sources[i] = InputValidator.ReformatInput(textFields[i].Text);
                 }
             }
 
