@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using WinFormsApp1.Model;
 
 namespace WinFormsApp1.View
@@ -43,20 +44,56 @@ namespace WinFormsApp1.View
             // 
             // IterationTitle
             // 
-            this.iterationTitle.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.iterationTitle.Font = Style.TitleLabelFont;
             this.iterationTitle.Location = new System.Drawing.Point(162, 50);
             this.iterationTitle.Name = "iterationTitle";
-            this.iterationTitle.Size = new System.Drawing.Size(277, 20);
+            this.iterationTitle.Size = Style.TitleLabelSize;
             this.iterationTitle.TabIndex = 0;
             this.iterationTitle.Text = InequalitiesFactory.Inequalities.Length>0?"Iteration 0:":"Final result:";
             this.iterationTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             //
             // Inequalities
             //
-            for (int i = 0; i < InequalitiesFactory.Inequalities.Length; i++)
+            int[] xCoors = { 50, 380, 430 };
+            System.Drawing.ContentAlignment[] alignments = new[]
+            {
+                System.Drawing.ContentAlignment.MiddleLeft, System.Drawing.ContentAlignment.MiddleCenter,
+                System.Drawing.ContentAlignment.MiddleRight
+            };
+            for (int i = 0; i < InequalitiesFactory.Inequalities.Length*3; i++)
+            {
+                inequalities[i] = new System.Windows.Forms.Label();
+                inequalities[i].Font = Style.InequalityFont;
+                inequalities[i].Location = new System.Drawing.Point(xCoors[i%3], 125+30*(i/3));
+                inequalities[i].TabIndex = i+1;
+                inequalities[i].TextAlign = alignments[i%3];
+                inequalities[i].Visible = false;
+
+                switch (i%3)
+                {
+                    case 0:
+                        inequalities[i].Name = $"ineq{i/3+1}";
+                        inequalities[i].Size = Style.InequalityLabelSize;
+                        inequalities[i].Text = InequalitiesFactory.Inequalities[i/3].ToString();
+                        break;
+                    case 1:
+                        inequalities[i].Name = $"=>{i/3+1}";
+                        inequalities[i].Size = Style.ArrowLabelSize;
+                        inequalities[i].Text = "=>";
+                        break;
+                    case 2:
+                        inequalities[i].Name = $"norm{i/3+1}";
+                        inequalities[i].Size = Style.NormalFormLabelSize;
+                        inequalities[i].Text = "x" + InequalitiesFactory.Inequalities[i / 3].NormalFormOperator +
+                                               InequalitiesFactory.Inequalities[i / 3].NormalFormC;
+                        break;
+                }
+                this.Controls.Add(inequalities[i]);
+            }
+            /*for (int i = 0; i < InequalitiesFactory.Inequalities.Length; i++)
             {
                 inequalities[i*3] = new System.Windows.Forms.Label();
-                inequalities[i*3].Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+                inequalities[i*3].Font = Style.InequalityFont;
                 inequalities[i*3].Location = new System.Drawing.Point(50, 125+30*i);
                 inequalities[i*3].Name = $"ineq{i+1}";
                 inequalities[i*3].Size = new System.Drawing.Size(320, 20);
@@ -67,7 +104,7 @@ namespace WinFormsApp1.View
                 this.Controls.Add(inequalities[i*3]);
                 
                 inequalities[i*3+1] = new System.Windows.Forms.Label();
-                inequalities[i*3+1].Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+                inequalities[i*3+1].Font = Style.InequalityFont;
                 inequalities[i*3+1].Location = new System.Drawing.Point(380, 125+30*i);
                 inequalities[i*3+1].Name = $"=>{i+1}";
                 inequalities[i*3+1].Size = new System.Drawing.Size(50, 20);
@@ -78,7 +115,7 @@ namespace WinFormsApp1.View
                 this.Controls.Add(inequalities[i*3+1]);
 
                 inequalities[i*3+2] = new System.Windows.Forms.Label();
-                inequalities[i*3+2].Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+                inequalities[i*3+2].Font = Style.InequalityFont;
                 inequalities[i*3+2].Location = new System.Drawing.Point(430, 125+30*i);
                 inequalities[i*3+2].Name = $"norm{i+1}";
                 inequalities[i*3+2].Size = new System.Drawing.Size(160, 20);
@@ -87,21 +124,21 @@ namespace WinFormsApp1.View
                 inequalities[i*3+2].TextAlign = System.Drawing.ContentAlignment.MiddleRight;
                 inequalities[i * 3 + 2].Visible = false;
                 this.Controls.Add(inequalities[i*3+2]);
-            }
+            }*/
             // 
             // ResultTitle
             // 
-            this.resultTitle.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.resultTitle.Font = Style.TitleLabelFont; 
             this.resultTitle.Location = new System.Drawing.Point(162, 295);
             this.resultTitle.Name = "resultTitle";
-            this.resultTitle.Size = new System.Drawing.Size(277, 20);
+            this.resultTitle.Size = Style.TitleLabelSize;
             this.resultTitle.TabIndex = 0;
             this.resultTitle.Text = "Current result:";
             this.resultTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Result
             // 
-            this.resultLable.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.resultLable.Font = Style.InequalityFont;
             this.resultLable.Location = new System.Drawing.Point(50, 325);
             this.resultLable.Name = "resultLable";
             this.resultLable.Size = new System.Drawing.Size(520, 20);
@@ -111,11 +148,11 @@ namespace WinFormsApp1.View
             //
             // nextButton
             //
-            this.nextButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.nextButton.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.nextButton.BackColor = Style.NextButtonColor;
+            this.nextButton.ForeColor = Style.NextButtonForeColor;
             this.nextButton.Location = new System.Drawing.Point(400, 350);
             this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(80, 35);
+            this.nextButton.Size = Style.ButtonSize;
             this.nextButton.TabIndex = 5;
             this.nextButton.Text = InequalitiesFactory.Inequalities.Length>0?"Continue":"Close";
             this.nextButton.UseVisualStyleBackColor = false;

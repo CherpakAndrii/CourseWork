@@ -28,7 +28,8 @@ namespace WinFormsApp1.View
                 Program.InequalityCounter = InequalitiesFactory.Inequalities.Length;
                 this.resultTitle.Text = "Final result:";
                 this.nextButton.Text = "Close";
-                this.nextButton.BackColor = System.Drawing.SystemColors.ScrollBar;
+                this.nextButton.BackColor = Style.ResetButtonColor;
+                this.nextButton.ForeColor = Style.ResetButtonForeColor;
             }
             Refresh();
         }

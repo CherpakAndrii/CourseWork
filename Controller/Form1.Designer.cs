@@ -1,4 +1,6 @@
-﻿namespace WinFormsApp1.Controller
+﻿using WinFormsApp1.View;
+
+namespace WinFormsApp1.Controller
 {
     partial class Form1
     {
@@ -47,10 +49,10 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.label1.Font = Style.TitleLabelFont;
             this.label1.Location = new System.Drawing.Point(162, 80);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 93);
+            this.label1.Size = Style.TitleLabelSize;
             this.label1.TabIndex = 0;
             this.label1.Text = "Enter your inequalities:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -59,21 +61,20 @@
             // 
             for (int i = 0; i < 4; i++)
             {
-                this.textFields[i].Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular,
-                    System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-                this.textFields[i].Location = new System.Drawing.Point(148, 180+40*i);
+                this.textFields[i].Font = Style.TextFieldFont;
+                this.textFields[i].Location = new System.Drawing.Point(148, 150+40*i);
                 this.textFields[i].Name = $"textBox{i+1}";
-                this.textFields[i].Size = new System.Drawing.Size(339, 29);
+                this.textFields[i].Size = Style.TextFieldSize;
                 this.textFields[i].TabIndex = 1+i;
             }
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button1.Location = new System.Drawing.Point(400, 350);
+            this.button1.BackColor = Style.NextButtonColor;
+            this.button1.ForeColor = Style.NextButtonForeColor;
+            this.button1.Location = new System.Drawing.Point(400, 320);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 35);
+            this.button1.Size = Style.ButtonSize;
             this.button1.TabIndex = 5;
             this.button1.Text = "Continue";
             this.button1.UseVisualStyleBackColor = false;
@@ -81,10 +82,11 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.button2.Location = new System.Drawing.Point(314, 350);
+            this.button2.BackColor = Style.ResetButtonColor;
+            this.button2.ForeColor = Style.ResetButtonForeColor;
+            this.button2.Location = new System.Drawing.Point(314, 320);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 35);
+            this.button2.Size = Style.ButtonSize;
             this.button2.TabIndex = 6;
             this.button2.Text = "Reset";
             this.button2.UseVisualStyleBackColor = false;
@@ -92,37 +94,37 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label2.Location = new System.Drawing.Point(115, 180);
+            this.label2.Font = Style.NumerationLabelFont;
+            this.label2.Location = new System.Drawing.Point(115, 150);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 19);
+            this.label2.Size = Style.NumerationLabelSize;
             this.label2.TabIndex = 7;
             this.label2.Text = "1:";
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label3.Location = new System.Drawing.Point(115, 220);
+            this.label3.Font = Style.NumerationLabelFont;
+            this.label3.Location = new System.Drawing.Point(115, 190);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 19);
+            this.label3.Size = Style.NumerationLabelSize;
             this.label3.TabIndex = 8;
             this.label3.Text = "2:";
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label4.Location = new System.Drawing.Point(115, 260);
+            this.label4.Font = Style.NumerationLabelFont;
+            this.label4.Location = new System.Drawing.Point(115, 230);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 19);
+            this.label4.Size = Style.NumerationLabelSize;
             this.label4.TabIndex = 9;
             this.label4.Text = "3:";
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label5.Location = new System.Drawing.Point(115, 300);
+            this.label5.Font = Style.NumerationLabelFont;
+            this.label5.Location = new System.Drawing.Point(115, 270);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 19);
+            this.label5.Size = Style.NumerationLabelSize;
             this.label5.TabIndex = 10;
             this.label5.Text = "4:";
             // 
@@ -152,15 +154,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-
         private System.Windows.Forms.Label label2;
-
         private System.Windows.Forms.Button button2;
-
         private System.Windows.Forms.Button button1;
-
         private System.Windows.Forms.TextBox[] textFields;
-
         private System.Windows.Forms.Label label1;
 
         #endregion
