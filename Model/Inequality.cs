@@ -5,7 +5,7 @@ namespace WinFormsApp1.Model
     public class Inequality
     {
         public int A, B, C;
-        private double NormalFormC;
+        public double NormalFormC;
         public string Operator;
         public string NormalFormOperator { get; private set; }
         public Range Range { get; private set; }

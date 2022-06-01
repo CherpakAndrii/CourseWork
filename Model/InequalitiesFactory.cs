@@ -6,8 +6,9 @@ namespace WinFormsApp1.Model
     public class InequalitiesFactory
     {
         public static string[] Sources = new string[4];
+        public static Inequality[] Inequalities;
 
-        public static Inequality[] GetInequalities()
+        public static void SetInequalities()
         {
             int inequalitiesAmount = 0;
             foreach (string source in Sources) if (source.Length > 0) inequalitiesAmount++;
@@ -24,7 +25,7 @@ namespace WinFormsApp1.Model
                 inequalities[i] = new Inequality(a, b, Operator, c);
                 i++;
             }
-            return inequalities;
+            Inequalities = inequalities;
         }
     }
 }

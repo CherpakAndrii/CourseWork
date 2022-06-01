@@ -1,10 +1,10 @@
 ﻿namespace WinFormsApp1.Model
 {
-    public class AnswerCalculator
+    public static class AnswerCalculator
     {
         public static Range? GetAnswer()
         {
-            Inequality[] inputs = InequalitiesFactory.GetInequalities();
+            Inequality[] inputs = InequalitiesFactory.Inequalities;
             Range answer = new Range(null, null);
             foreach (var inequality in inputs)
             {

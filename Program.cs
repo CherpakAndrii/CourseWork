@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.Controller;
 using WinFormsApp1.Model;
+using WinFormsApp1.View;
 using Range = WinFormsApp1.Model.Range;
 
 
@@ -11,7 +13,8 @@ namespace WinFormsApp1
 {
     static class Program
     {
-        public static bool Form1Closed = true, Form2Closed = true;
+        public static bool Form1Closed = true;
+        public static int InequalityCounter = 0;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -24,9 +27,9 @@ namespace WinFormsApp1
             Application.Run(new Form1());
             if (!Form1Closed)
             {
-                Range? result = AnswerCalculator.GetAnswer();
-                if (result is null) MessageBox.Show("No answer");
-                else MessageBox.Show(result.ToString());
+                InequalitiesFactory.SetInequalities();
+                InequalityCounter = 0;
+                Application.Run(new ResultForm());
             }
         }
     }
