@@ -1,12 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Controller;
 using WinFormsApp1.Model;
 using WinFormsApp1.View;
-using Range = WinFormsApp1.Model.Range;
 
 
 namespace WinFormsApp1
@@ -14,7 +10,7 @@ namespace WinFormsApp1
     static class Program
     {
         public static bool Form1Closed = true;
-        public static int InequalityCounter = 0;
+        public static int InequalityCounter;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
